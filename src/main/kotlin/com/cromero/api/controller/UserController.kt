@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.*
 class UserController (val userService: UserService) {
 
     @GetMapping
-    fun findAll(): List<User> {
-        return userService.findAll()
-    }
+    fun findAll()=userService.findAll()
+
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
