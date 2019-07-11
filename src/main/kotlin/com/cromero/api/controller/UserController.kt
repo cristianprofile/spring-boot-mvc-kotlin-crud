@@ -18,8 +18,8 @@ class UserController (val userService: UserService) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun addUser(@RequestBody user: com.cromero.api.controller.User){
-        val user = User(name = user.name, age=user.age, favoriteNumber = user.favoriteNumber)
-        userService.addUser(user)
+        val userModel = user.toUserModel()
+        userService.addUser(userModel)
     }
 
     @GetMapping(value = "/{name}")
