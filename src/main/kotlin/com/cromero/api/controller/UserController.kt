@@ -14,13 +14,10 @@ class UserController (val userService: UserService) {
     @GetMapping
     fun findAll()=userService.findAll()
 
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun addUser(@RequestBody user: com.cromero.api.controller.User){
-        val userModel = user.toUserModel()
-        userService.addUser(userModel)
-    }
+    fun addUser(@RequestBody user: com.cromero.api.controller.User)= userService.addUser(user.toUserModel())
+
 
     @GetMapping(value = "/{name}")
     fun getUser(@PathVariable("name") name: String): User? = userService.findByName(name)
