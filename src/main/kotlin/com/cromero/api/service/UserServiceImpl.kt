@@ -1,21 +1,20 @@
 package com.cromero.api.service
 
+import com.cromero.api.repository.UserRepository
 import org.springframework.stereotype.Service
 
 @Service
-class UserServiceImpl :UserService {
+class UserServiceImpl (val userRepository: UserRepository) :UserService  {
 
 
-    private val users =  mutableListOf( User(name = "pepe",age = 22,favoriteNumber = "3"),
-            User(name = "manolo",age = 25,favoriteNumber = "8"),
-            User(name = "juan",age = 27,favoriteNumber = "9"))
+    override fun findAll(): List<User> =userRepository.findAll().map { it.conveToUserModel() }
 
-    override fun findAll(): List<User> =users
+    override fun findByName(name: String): User? = userRepository.findByName(name)?.conveToUserModel()
 
-    override fun findByName(name: String): User? = users.firstOrNull {it.name.contentEquals(name)}
 
     override fun addUser(user: User): User {
-        users.add(user)
+        val userEntity = user.toUserEntity()
+        userRepository.save(userEntity)
         return user
     }
 }
