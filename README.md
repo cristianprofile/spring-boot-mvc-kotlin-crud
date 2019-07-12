@@ -1,7 +1,7 @@
 # spring boot and kotlin wedding :) testing crud operation using spring web(rest layer) and Spring Data Jpa with Kotlin
 
 ![Spring boot kotlin](/images/spring_boot_kotlin.png?raw=true "Spring boot kotlin")
-spring_boot_kotlin.png
+
 
 
 
