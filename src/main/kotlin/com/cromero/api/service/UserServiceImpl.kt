@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service
 class UserServiceImpl (val userRepository: UserRepository) :UserService  {
 
 
-    override fun findAll(): List<User> =userRepository.findAll().map { it.conveToUserModel() }
+    override fun findAll(): List<User> =userRepository.findAll().map { it.convertToUserModel() }
 
-    override fun findByName(name: String): User? = userRepository.findByName(name)?.conveToUserModel()
+    override fun findByName(name: String): User? = userRepository.findByName(name)?.convertToUserModel()
 
 
     override fun addUser(user: User): User {

@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 class UserControllerMockMvcTest (@Autowired  val mockMvc: MockMvc,
-                                 @Autowired val restTemplate: TestRestTemplate,
+                                 @Autowired  val restTemplate: TestRestTemplate,
                                  @Autowired  val userRepository: UserRepository) {
 
     @Test
