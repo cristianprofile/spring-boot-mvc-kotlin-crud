@@ -4,7 +4,8 @@ package com.cromero.api
 import com.cromero.api.controller.User
 import com.cromero.api.repository.UserEntity
 import com.cromero.api.repository.UserRepository
-import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -33,7 +34,6 @@ class UserControllerMockMvcTest (@Autowired  val mockMvc: MockMvc,
                 .andExpect(jsonPath("\$.name").value(user.name))
                 .andExpect(jsonPath("\$.age").value(user.age))
                 .andExpect(jsonPath("\$.favoriteNumber").value(user.favoriteNumber))
-
     }
 
 
@@ -47,10 +47,10 @@ class UserControllerMockMvcTest (@Autowired  val mockMvc: MockMvc,
         val result = restTemplate.getForEntity<User>("/user/${user.name}")
 
         //user asserts from database
-        Assertions.assertThat(result.statusCode).isEqualTo(HttpStatus.OK)
-        org.junit.jupiter.api.Assertions.assertTrue(result.body!!.name == user.name)
-        org.junit.jupiter.api.Assertions.assertTrue(result.body!!.age == user.age)
-        org.junit.jupiter.api.Assertions.assertTrue(result.body!!.favoriteNumber == user.favoriteNumber)
+        assertEquals(result.statusCode,HttpStatus.OK)
+        assertTrue(result.body!!.name == user.name)
+        assertTrue(result.body!!.age == user.age)
+        assertTrue(result.body!!.favoriteNumber == user.favoriteNumber)
 
     }
 
