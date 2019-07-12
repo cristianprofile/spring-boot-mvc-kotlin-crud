@@ -5,7 +5,7 @@ import com.cromero.api.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
-
+//TODO Use try monad of Arrow https://arrow-kt.io/docs/arrow/core/try/
 
 @RestController
 @RequestMapping("/user")
