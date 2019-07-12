@@ -7,7 +7,7 @@
 
 
 This is an example project trying to learn  Kotlin using Spring mvc and Spring data Jpa. When i finish the project i will
-give my own opinion about this new language (for me is new because I am just reading how to write code with it) and how difficult is to learn kotling if you are a java (it's my case)
+give my own opinion about this new language (for me is new because I am just reading how to write code with it) and how difficult is to learn kotlin if you are a java (it's my case)
 
 
 
