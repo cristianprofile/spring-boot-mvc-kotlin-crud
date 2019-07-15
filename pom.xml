@@ -85,11 +85,34 @@
         </dependency>
 
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.ninja-squad</groupId>
             <artifactId>springmockk</artifactId>
             <version>1.1.2</version>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>2.4.0</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.natpryce</groupId>
+            <artifactId>hamkrest</artifactId>
+            <version>1.7.0.0</version>
+            <scope>test</scope>
+        </dependency>
+
+
 
     </dependencies>
 
