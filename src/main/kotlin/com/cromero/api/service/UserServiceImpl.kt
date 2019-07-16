@@ -15,6 +15,8 @@ class UserServiceImpl (val userRepository: UserRepository) :UserService  {
     override fun addUser(user: User): User {
         val userEntity = user.toUserEntity()
         userRepository.save(userEntity)
+        //TODO CREATE A MAPPER FROM POJO TO DATAMODEL
+        user.id=userEntity.id
         return user
     }
 }

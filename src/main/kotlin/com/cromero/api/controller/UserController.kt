@@ -1,6 +1,5 @@
 package com.cromero.api.controller
 
-import com.cromero.api.service.User
 import com.cromero.api.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -16,10 +15,11 @@ class UserController (val userService: UserService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun addUser(@RequestBody user: com.cromero.api.controller.User)= userService.addUser(user.toUserModel())
+    fun addUser(@RequestBody user: User)= userService.addUser(user.toUserModel())
 
 
+    //TODO rewrite using exceptions or arrow's try monad
     @GetMapping(value = "/{name}")
-    fun getUser(@PathVariable("name") name: String): User? = userService.findByName(name)
+    fun getUser(@PathVariable("name") name: String):Any= userService.findByName(name)?:Error("001","user does not exist")
 
 }
