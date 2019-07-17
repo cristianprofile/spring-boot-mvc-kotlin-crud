@@ -46,11 +46,12 @@ class UserControllerMockMvcTest (@Autowired  val mockMvc: MockMvc,
         //get the user by id
         val result = restTemplate.getForEntity<User>("/user/${user.name}")
 
+
         //user asserts from database
         assertEquals(result.statusCode,HttpStatus.OK)
-        assertTrue(result.body!!.name == user.name)
-        assertTrue(result.body!!.age == user.age)
-        assertTrue(result.body!!.favoriteNumber == user.favoriteNumber)
+        assertTrue(result.body?.name == user.name)
+        assertTrue(result.body?.age == user.age)
+        assertTrue(result.body?.favoriteNumber == user.favoriteNumber)
 
     }
 
