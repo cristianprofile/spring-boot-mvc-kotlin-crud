@@ -17,4 +17,4 @@ give my own opinion about this new language (for me is new because I am just rea
 - Use mapping between layers using (https://stackoverflow.com/questions/39199426/better-way-to-map-kotlin-data-objects-to-data-objects)
 - Create integration test layer using mockmvc and rest template
 - Test when "pattern matching" and Enum classes with static methods using companion object
-- Test kotling amazing null properties: using Safe Calls operator (?.) and the Elvis Operator (?:)
+- Test kotlin amazing null properties: using Safe Calls operator (?.) and the Elvis Operator (?:)
