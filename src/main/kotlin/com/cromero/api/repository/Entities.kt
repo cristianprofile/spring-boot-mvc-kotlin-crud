@@ -1,5 +1,6 @@
 package com.cromero.api.repository
 
+import com.cromero.api.service.Color
 import com.cromero.api.service.User
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -12,7 +13,9 @@ data class UserEntity (@Id @GeneratedValue var id: Long? = null, val name:String
             id=id,
             name = name,
             age = age,
-            favoriteNumber = favoriteNumber
+            favoriteNumber = favoriteNumber,
+            color = Color.assignColorPerAge(age)
+
     )
 }
 

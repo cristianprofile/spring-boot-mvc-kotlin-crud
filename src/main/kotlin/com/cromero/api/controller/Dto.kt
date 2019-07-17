@@ -1,5 +1,6 @@
 package com.cromero.api.controller
 
+import com.cromero.api.service.Color
 
 
 data class User (var id: Long? = null,val name:String, val age:Int,val favoriteNumber: String)
@@ -8,7 +9,8 @@ data class User (var id: Long? = null,val name:String, val age:Int,val favoriteN
             id=id,
             name = name,
             age = age,
-            favoriteNumber = favoriteNumber
+            favoriteNumber = favoriteNumber,
+            color = Color.assignColorPerAge(age)
     )
 
 }

@@ -1,6 +1,7 @@
 package com.cromero.api
 
 import com.cromero.api.controller.UserController
+import com.cromero.api.service.Color
 import com.cromero.api.service.User
 import com.cromero.api.service.UserService
 import com.ninjasquad.springmockk.MockkBean
@@ -37,9 +38,9 @@ internal class UserControllerMvcMokkTest(@Autowired  val mockMvc: MockMvc)
     @Test
     fun `find Al users returns list`() {
 
-        val users= listOf( User(id=1,name = "pepe",age = 22,favoriteNumber = "3"),
-                User(id=2,name = "manolo",age = 25,favoriteNumber = "8"),
-                User(id=3,name = "juan",age = 27,favoriteNumber = "9"))
+        val users= listOf( User(id=1,name = "pepe",age = 22,favoriteNumber = "3",color= Color.assignColorPerAge(22)),
+                User(id=2,name = "manolo",age = 25,favoriteNumber = "8",color= Color.assignColorPerAge(25)),
+                User(id=3,name = "juan",age = 27,favoriteNumber = "9",color= Color.assignColorPerAge(27)))
 
         every { userService.findAll() } returns users
 
@@ -62,7 +63,8 @@ internal class UserControllerMvcMokkTest(@Autowired  val mockMvc: MockMvc)
                                                          favoriteNumberExpected:String ) {
 
 
-        val user = User(id = idExpected, name = nameExpected, age = ageExpected, favoriteNumber = favoriteNumberExpected)
+        val user = User(id = idExpected, name = nameExpected, age = ageExpected, favoriteNumber = favoriteNumberExpected,
+                color= Color.assignColorPerAge(ageExpected))
 
         every { userService.findByName(nameExpected) } returns user
 
