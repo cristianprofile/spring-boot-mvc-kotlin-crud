@@ -15,11 +15,11 @@ class UserController (val userService: UserService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun addUser(@RequestBody user: User)= userService.addUser(user.toUserModel())
-
+    fun addUser(@RequestBody user: User)= userService.addUser(user.toUserModel()).convertToUser()
 
     //TODO rewrite using exceptions or arrow's try monad
     @GetMapping(value = "/{name}")
-    fun getUser(@PathVariable("name") name: String):Any= userService.findByName(name)?:Error("001","user does not exist")
+    fun getUser(@PathVariable("name") name: String): Any =
+            userService.findByName(name)?.convertToUser()?:Error("001","user does not exist")
 
 }

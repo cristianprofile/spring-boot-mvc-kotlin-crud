@@ -1,5 +1,6 @@
 package com.cromero.api.service
 
+import com.cromero.api.controller.User
 import com.cromero.api.repository.UserEntity
 
 
@@ -21,12 +22,20 @@ enum class Color(val rgb: Int,val description:String) {
 
 data class User (var id: Long? = null,val name:String, val age:Int,val favoriteNumber: String,val color: Color)
 {
-     fun toUserEntity() =UserEntity(
+     fun convertToUserEntity() =UserEntity(
             id=id,
             name = name,
             age = age,
             favoriteNumber = favoriteNumber
     )
+
+    fun convertToUser() =User(
+            id=id,
+            name = name,
+            age = age,
+            favoriteNumber = favoriteNumber
+    )
+
 }
 
 data class Pet (val name:String,val age:Int)

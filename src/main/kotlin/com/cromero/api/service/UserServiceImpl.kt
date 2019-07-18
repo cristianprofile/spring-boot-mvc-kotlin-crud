@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 class UserServiceImpl (val userRepository: UserRepository) :UserService  {
 
     companion object {
-        private val LOGGER = LoggerFactory.getLogger(this.javaClass.name)
+        private val LOGGER = LoggerFactory.getLogger(this::class.java.name)
     }
 
     override fun findAll(): List<User> =userRepository.findAll().map { it.convertToUserModel() }
@@ -18,7 +18,7 @@ class UserServiceImpl (val userRepository: UserRepository) :UserService  {
 
     override fun addUser(user: User): User {
         LOGGER.info("Trying to create user $user")
-        val userEntity = user.toUserEntity()
+        val userEntity = user.convertToUserEntity()
         val savedEntity = userRepository.save(userEntity)
         //TODO CREATE A MAPPER FROM POJO TO DATAMODEL
         LOGGER.info("User $savedEntity was was successfully created")
