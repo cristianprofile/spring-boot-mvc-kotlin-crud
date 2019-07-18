@@ -1,6 +1,5 @@
 package com.cromero.api.service
 
-import com.cromero.api.controller.User
 import com.cromero.api.repository.UserEntity
 
 
@@ -29,12 +28,17 @@ data class User (var id: Long? = null,val name:String, val age:Int,val favoriteN
             favoriteNumber = favoriteNumber
     )
 
-    fun convertToUser() =User(
-            id=id,
-            name = name,
-            age = age,
-            favoriteNumber = favoriteNumber
-    )
+
+    companion object {
+        fun createFromUserEntity(userEntity: UserEntity) = User(
+                id = userEntity.id,
+                name = userEntity.name,
+                age = userEntity.age,
+                favoriteNumber = userEntity.favoriteNumber,
+                color = Color.assignColorPerAge(userEntity.age)
+        )
+    }
+
 
 }
 

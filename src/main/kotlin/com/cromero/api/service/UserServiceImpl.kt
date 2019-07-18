@@ -11,9 +11,9 @@ class UserServiceImpl (val userRepository: UserRepository) :UserService  {
         private val LOGGER = LoggerFactory.getLogger(this::class.java.name)
     }
 
-    override fun findAll(): List<User> =userRepository.findAll().map { it.convertToUserModel() }
+    override fun findAll(): List<User> =userRepository.findAll().map { User.createFromUserEntity(it) }
 
-    override fun findByName(name: String): User? = userRepository.findByName(name)?.convertToUserModel()
+    override fun findByName(name: String): User? = userRepository.findByName(name)?.let { User.createFromUserEntity(it) }
 
 
     override fun addUser(user: User): User {
@@ -22,6 +22,6 @@ class UserServiceImpl (val userRepository: UserRepository) :UserService  {
         val savedEntity = userRepository.save(userEntity)
         //TODO CREATE A MAPPER FROM POJO TO DATAMODEL
         LOGGER.info("User $savedEntity was was successfully created")
-        return savedEntity.convertToUserModel()
+        return User.createFromUserEntity(savedEntity)
     }
 }
