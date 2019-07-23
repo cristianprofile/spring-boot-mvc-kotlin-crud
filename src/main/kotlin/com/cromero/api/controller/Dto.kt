@@ -3,7 +3,7 @@ package com.cromero.api.controller
 import com.cromero.api.service.Color
 
 
-data class User (var id: Long? = null,val name:String, val age:Int,val favoriteNumber: String,val color: Color)
+data class User (val id: Long? = null,val name:String, val age:Int,val favoriteNumber: String,val color: Color)
 {
     internal fun toUserModel() = com.cromero.api.service.User(
             id=id,
@@ -30,8 +30,8 @@ data class User (var id: Long? = null,val name:String, val age:Int,val favoriteN
 data class ResponseDTO (val status: Int,val data: Any)
 
 
-class ResponseErrorDTO(var message: String,
-                       var code: String)
+class ResponseErrorDTO(val message: String,
+                       val code: String)
 
 
 data class Error(val errorCode:String,val errorDescription:String)

@@ -19,7 +19,7 @@ enum class Color(val rgb: Int,val description:String) {
     }
 }
 
-data class User (var id: Long? = null,val name:String, val age:Int,val favoriteNumber: String,val color: Color)
+data class User (val id: Long? = null,val name:String, val age:Int,val favoriteNumber: String,val color: Color)
 {
      fun convertToUserEntity() =UserEntity(
             id=id,

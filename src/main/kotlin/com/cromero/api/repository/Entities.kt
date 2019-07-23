@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
 @Entity
-data class UserEntity (@Id @GeneratedValue var id: Long? = null, val name:String, val age:Int, val favoriteNumber: String)
+data class UserEntity (@Id @GeneratedValue val id: Long? = null, val name:String, val age:Int, val favoriteNumber: String)
 
 @Entity
-data class PetEntity (@Id @GeneratedValue var id: Long? = null, val name:String, val age:Int)
+data class PetEntity (@Id @GeneratedValue val id: Long? = null, val name:String, val age:Int)

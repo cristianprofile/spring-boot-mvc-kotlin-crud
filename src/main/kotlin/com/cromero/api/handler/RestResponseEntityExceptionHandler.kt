@@ -16,7 +16,7 @@ class RestResponseEntityExceptionHandler(private val messageSource: MessageSourc
 
     @ExceptionHandler(UserNotFoundException::class)
     fun handleControllerException(ex: UserNotFoundException, request: WebRequest): ResponseEntity<Any> {
-        handlerLogger.error("{} User not found exception: {}", ex.message)
+        handlerLogger.error("$ex.message" )
         val responseDTO = ResponseDTO(status = HttpStatus.NOT_FOUND.value(), data = "User not found")
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDTO)
     }
@@ -31,7 +31,7 @@ class RestResponseEntityExceptionHandler(private val messageSource: MessageSourc
      */
     @ExceptionHandler(RuntimeException::class)
     fun handleInternal(ex: RuntimeException, request: WebRequest): ResponseEntity<Any> {
-        handlerLogger.error("{} Unhandled runtime exception was thrown. With message: {}", ex.message)
+        handlerLogger.error(" Unhandled runtime exception was thrown. With message: $ex.message")
         val responseDTO = ResponseDTO(status = 500, data = "Server Error")
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseDTO)
     }
