@@ -13,17 +13,17 @@ give my own opinion about this new language (for me is new because I am just rea
 
 
 
-- Use Spring data jpa H2 in memory Database
-- Use mapping between layers using (https://stackoverflow.com/questions/39199426/better-way-to-map-kotlin-data-objects-to-data-objects)
-- Create integration test layer using mockmvc and rest template
-- Test when "pattern matching" and Enum classes with static methods using companion object
-- Test kotlin amazing null properties: using Safe Calls operator (?.) and the Elvis Operator (?:)
+. Use Spring data jpa H2 in memory Database
+. Use mapping between layers using (https://stackoverflow.com/questions/39199426/better-way-to-map-kotlin-data-objects-to-data-objects)
+. Create integration test layer using mockmvc and rest template
+. Test when "pattern matching" and Enum classes with static methods using companion object
+. Test kotlin amazing null properties: using Safe Calls operator (?.) and the Elvis Operator (?:)
 +
 [source,kotlin]
 ----
 userService.findByName(name)?.let { User.createFromUserModel(it) }?: throw UserNotFoundException("user not found")
 ----
-- Added A convenient and performant logging library wrapping slf4j with Kotlin extensions. https://github.com/MicroUtils/kotlin-logging
+. Added A convenient and performant logging library wrapping slf4j with Kotlin extensions. https://github.com/MicroUtils/kotlin-logging
 +
 [source,kotlin]
 ----
