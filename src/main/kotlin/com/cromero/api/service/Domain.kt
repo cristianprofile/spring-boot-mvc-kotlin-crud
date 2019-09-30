@@ -9,11 +9,16 @@ enum class Color(val rgb: Int,val description:String) {
     GREEN(0x00FF00,"green color"),
     BLUE(0x0000FF,"green color"),
     BLACK(0x0000FF,"black color");
+
     companion object {
+        // When expression is exhaustive, else is a must with integer value. It is better to use Enum or Sealed
+        //classes instead if it would be possible because do not need else branch
         fun assignColorPerAge(age: Int) = when (age) {
+            in Int.MIN_VALUE..0 -> BLACK
             in 1..10 -> BLUE
             in 20..40 -> GREEN
             in 40..99 -> RED
+            in 100..Int.MAX_VALUE -> BLACK
             else -> BLACK
         }
     }
@@ -43,3 +48,8 @@ data class User (val id: Long? = null,val name:String, val age:Int,val favoriteN
 }
 
 data class Pet (val name:String,val age:Int)
+
+
+
+
+

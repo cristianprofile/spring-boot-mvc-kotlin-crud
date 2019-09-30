@@ -113,6 +113,13 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>io.github.microutils</groupId>
+            <artifactId>kotlin-logging</artifactId>
+            <version>1.7.6</version>
+        </dependency>
+
+
 
     </dependencies>
 

@@ -2,7 +2,7 @@ package com.cromero.api.handler
 
 import com.cromero.api.controller.ResponseDTO
 import com.cromero.api.service.UserNotFoundException
-import org.slf4j.LoggerFactory
+import mu.KotlinLogging
 import org.springframework.context.MessageSource
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,9 +14,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 class RestResponseEntityExceptionHandler(private val messageSource: MessageSource) : ResponseEntityExceptionHandler() {
 
+    private val LOGGER = KotlinLogging.logger {}
+
+
     @ExceptionHandler(UserNotFoundException::class)
     fun handleControllerException(ex: UserNotFoundException, request: WebRequest): ResponseEntity<Any> {
-        handlerLogger.error("$ex.message" )
+        LOGGER.error("$ex.message" )
         val responseDTO = ResponseDTO(status = HttpStatus.NOT_FOUND.value(), data = "User not found")
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDTO)
     }
@@ -31,15 +34,9 @@ class RestResponseEntityExceptionHandler(private val messageSource: MessageSourc
      */
     @ExceptionHandler(RuntimeException::class)
     fun handleInternal(ex: RuntimeException, request: WebRequest): ResponseEntity<Any> {
-        handlerLogger.error(" Unhandled runtime exception was thrown. With message: $ex.message")
+        LOGGER.error(" Unhandled runtime exception was thrown. With message: $ex.message")
         val responseDTO = ResponseDTO(status = 500, data = "Server Error")
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseDTO)
-    }
-
-    companion object {
-
-        private val handlerLogger = LoggerFactory.getLogger(RestResponseEntityExceptionHandler::class.java)
-
     }
 
 }

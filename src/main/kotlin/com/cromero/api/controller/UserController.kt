@@ -20,8 +20,7 @@ class UserController (val userService: UserService) {
     @ResponseStatus(HttpStatus.CREATED)
     fun addUser(@RequestBody user: User)= User.createFromUserModel(userService.addUser(user.toUserModel()))
 
-    //TODO rewrite using exceptions of arrow's try monad,workaround now return any object to
-    // allow method returning user model/error model
+    //TODO rewrite using exceptions of arrow's  or Result.
     @GetMapping(value = ["/{name}"])
     fun getUser(@PathVariable("name") name: String) =
         userService.findByName(name)?.let { User.createFromUserModel(it) }?: throw UserNotFoundException("user not found")
