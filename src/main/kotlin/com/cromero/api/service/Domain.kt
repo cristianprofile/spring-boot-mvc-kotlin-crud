@@ -5,10 +5,10 @@ import com.cromero.api.repository.UserEntity
 
 
 enum class Color(val rgb: Int,val description:String) {
-    RED(0xFF0000,"red color"),
-    GREEN(0x00FF00,"green color"),
-    BLUE(0x0000FF,"green color"),
-    BLACK(0x0000FF,"black color");
+    RED(0xFF0000,"red color nice"),
+    GREEN(0x00FF00,"green color ugly"),
+    BLUE(0x0000FF,"blue color dirty"),
+    BLACK(0x0000FF,"black color nice");
 
     companion object {
         // When expression is exhaustive, else is a must with integer value. It is better to use Enum or Sealed

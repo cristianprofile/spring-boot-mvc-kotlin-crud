@@ -42,6 +42,14 @@ give my own opinion about this new language (for me is new because I am just rea
             in 100..Int.MAX_VALUE -> BLACK
             else -> BLACK
         }
+
+  // Example of code using Enum. Else branch is not a must with enum and sealed class
+  when (val color=createFromUserModel.color) {
+                Color.BLACK->  "Your black color description is ${color.description}"
+                Color.RED -> "Your red color description is ${color.description}"
+                Color.GREEN -> "Your green color description is ${color.description}"
+                Color.BLUE -> "Your blue color description is ${color.description}"
+            }
 ----
 . Test kotlin amazing null properties: using Safe Calls operator (?.) and the Elvis Operator (?:)
 +

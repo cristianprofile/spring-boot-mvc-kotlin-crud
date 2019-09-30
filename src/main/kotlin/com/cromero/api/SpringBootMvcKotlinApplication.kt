@@ -9,3 +9,6 @@ class SpringBootMvcKotlinApplication
 fun main(args: Array<String>) {
     runApplication<SpringBootMvcKotlinApplication>(*args)
 }
+
+
+
