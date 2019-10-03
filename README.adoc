@@ -104,3 +104,37 @@ private val LOGGER = KotlinLogging.logger {}
 // i.e. pieces of code that are evaluated and whose results are concatenated into the string
 LOGGER.info("User $savedEntity  was successfully created")
 ----
+
+. Testing Kotlin Collections filters and orders methods: Java .stream is not needed
+and it is not a must to make splicit call to  .collect(Collectors.toList()); (collections are
+stronger comparing to Java)
++
+[source,kotlin]
+----
+     /**
+     * Find all users containing {letters} in its name. It returns all users if letters is null
+     */
+    @GetMapping(value = ["/findAllContainsLetters", "/findAllContainsLetters/{letters}"])
+    fun findAllContainsLetter(@PathVariable("letters") letters: String?) =
+        userService.findAll().filter { user: com.cromero.api.service.User ->
+            letters?.let { cad: String -> user.name.toUpperCase().contains(cad.toUpperCase()) } ?: true
+        }.sortedBy { it.name }
+----
+
+
+. Ranges can be used in many cases: for, if, case etc...
+
++
+[source,kotlin]
+----
+    if (createFromUserModel.age in 0..18)
+            {
+                "is not legal age"
+            }
+            else
+            {
+                "is legal age"
+            }
+----
+
+

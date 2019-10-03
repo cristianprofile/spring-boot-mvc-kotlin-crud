@@ -28,7 +28,7 @@ class UserController (val userService: UserService) {
 
 
     //TODO rewrite using exceptions of arrow's  or Result.
-    @GetMapping(value = ["color/{name}"])
+    @GetMapping(value = ["/color/{name}"])
     fun getColorTextByName(@PathVariable("name") name: String) =
         userService.findByName(name)?.let {
             val createFromUserModel = User.createFromUserModel(it)
@@ -40,6 +40,31 @@ class UserController (val userService: UserService) {
             }
         }?: throw UserNotFoundException("user not found")
 
+    //TODO rewrite using exceptions of arrow's  or Result.
+    @GetMapping(value = ["/legalAge/{name}"])
+    fun isLegalAge(@PathVariable("name") name: String) =
+        userService.findByName(name)?.let {
+            val createFromUserModel = User.createFromUserModel(it)
+            if (createFromUserModel.age in 0..18)
+            {
+                "is not legal age"
+            }
+            else
+            {
+                "is legal age"
+            }
+        }?: throw UserNotFoundException("name not found")
+
+
+    //TODO rewrite using exceptions of arrow's  or Result.
+    /**
+     * Find all users containing {letters} in its name. It returns all users if letters is null
+     */
+    @GetMapping(value = ["/findAllContainsLetters", "/findAllContainsLetters/{letters}"])
+    fun findAllContainsLetter(@PathVariable("letters") letters: String?) =
+        userService.findAll().filter { user: com.cromero.api.service.User ->
+            letters?.let { cad: String -> user.name.toUpperCase().contains(cad.toUpperCase()) } ?: true
+        }.sortedBy { it.name }
 
 }
 
