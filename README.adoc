@@ -12,6 +12,19 @@ give my own opinion about this new language (for me is new because I am just rea
 
 
 . Use Spring data jpa H2 in memory Database
+. Creating DTOs (POJOs/POCOs) is very easy (no library is needed as in Java)
++
+[source,kotlin]
+----
+@Entity
+data class UserEntity (@Id @GeneratedValue val id: Long? = null, val name:String, val age:Int, val favoriteNumber: String)
+
+@Entity
+data class PetEntity (@Id @GeneratedValue val id: Long? = null, val name:String, val age:Int)
+----
+
+
+
 . Use mapping between layers using (https://stackoverflow.com/questions/39199426/better-way-to-map-kotlin-data-objects-to-data-objects)
 +
 [source,kotlin]
