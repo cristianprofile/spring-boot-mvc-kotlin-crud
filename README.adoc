@@ -12,7 +12,8 @@ give my own opinion about this new language (for me is new because I am just rea
 
 
 . Use Spring data jpa H2 in memory Database
-. Creating DTOs (POJOs/POCOs) is very easy (no library is needed as in Java)
+. Creating DTOs (POJOs/POCOs) is very easy (no library is needed as in Java).
+  Properties in Kotlin classes can be declared either as *mutable using the var* keyword, or as *read-only using the val keyword*.
 +
 [source,kotlin]
 ----
@@ -26,6 +27,8 @@ data class PetEntity (@Id @GeneratedValue val id: Long? = null, val name:String,
 
 
 . Use mapping between layers using (https://stackoverflow.com/questions/39199426/better-way-to-map-kotlin-data-objects-to-data-objects)
+ If you need to write a function that can be called without having a class instance but needs access to the internals of a class (for example, a factory method), you can write it as a member of an object declaration inside that class.
+ Even more specifically, if you declare a companion object inside your class, you can access its members using only the class name as a qualifier.
 +
 [source,kotlin]
 ----
