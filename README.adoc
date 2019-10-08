@@ -24,7 +24,14 @@ data class UserEntity (@Id @GeneratedValue val id: Long? = null, val name:String
 data class PetEntity (@Id @GeneratedValue val id: Long? = null, val name:String, val age:Int)
 ----
 
+. Inheritance: All classes in Kotlin have a common superclass Any, that is the default superclass for a class with no supertypes. To declare an explicit supertype, place the type after a colon in the class header:
 
++
+[source,kotlin]
+----
+@Service
+class UserServiceImpl (val userRepository: UserRepository) :UserService
+----
 
 . Use mapping between layers using (https://stackoverflow.com/questions/39199426/better-way-to-map-kotlin-data-objects-to-data-objects)
  If you need to write a function that can be called without having a class instance but needs access to the internals of a class (for example, a factory method), you can write it as a member of an object declaration inside that class.
