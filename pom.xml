@@ -90,6 +90,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.ninja-squad</groupId>
             <artifactId>springmockk</artifactId>
             <version>1.1.2</version>
