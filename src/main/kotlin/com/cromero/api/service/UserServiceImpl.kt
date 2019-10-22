@@ -1,12 +1,13 @@
 package com.cromero.api.service
 
+import com.cromero.api.CustomProperties
 import com.cromero.api.repository.UserRepository
 import mu.KotlinLogging
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class UserServiceImpl (val userRepository: UserRepository) :UserService  {
+class UserServiceImpl (val userRepository: UserRepository,val customProperties: CustomProperties) :UserService  {
 
     private val LOGGER = KotlinLogging.logger {}
 

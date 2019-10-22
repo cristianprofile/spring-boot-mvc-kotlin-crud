@@ -168,3 +168,50 @@ stronger comparing to Java)
 ----
 
 
+Spring loves Kotlin :) using several features making easier our code:
+
+. Injecting beans by constructor. example injecting our service bean in our controller:
+
++
+[source,kotlin]
+----
+@RestController
+@RequestMapping("/user")
+class UserController (val userService: UserService)
+
+@Service
+class UserServiceImpl (val userRepository: UserRepository,val customProperties: CustomProperties) :UserService
+----
+
+. Use your data class defining your custom application properties (new in Spring boot 2.2):
+
++
+[source,kotlin]
+----
+//using data class and Kotling default values inside properties.
+//mandatory properties and optional using nullable properties
+@ConstructorBinding
+@ConfigurationProperties("com.cromero.application")
+data class CustomProperties(
+    val name: String?="app with no name",
+    val description: String,
+    val database: Database)
+{
+    data class Database(
+        val host: InetAddress?=InetAddress.getByName("127.0.0.1"),
+        val port: Integer,
+        val connectTimeout : Duration=Duration.ofMillis(1000))
+}
+
+// application.properties values
+server.port=8082
+management.endpoint.health.show-details=always
+com.cromero.application.name=users application
+com.cromero.application.description=application demo using kotlin and Spring boot 2.2
+com.cromero.application.database.host=123.23.23.2
+com.cromero.application.database.port=88
+com.cromero.application.database.connectTimeout=500ms
+----
+
+
+
