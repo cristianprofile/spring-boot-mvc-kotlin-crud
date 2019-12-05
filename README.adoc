@@ -1,11 +1,10 @@
 # spring boot and kotlin wedding :) testing crud operation using spring web(rest layer) and Spring Data Jpa with Kotlin
 
-
 image::/images/spring_boot_kotlin.png?raw=true[Spring boot kotlin]
 
 
-This is an example project trying to learn  Kotlin using Spring mvc and Spring data Jpa. When i finish the project i will
-give my own opinion about this new language (for me is new because I am just reading how to write code with it) and how difficult is to learn kotlin if you are a java (it's my case)
+This is an example project trying to learn Kotlin using Spring mvc and Spring data Jpa.
+When i finish the project i will give my own opinion about this new language (for me is new because I am just reading how to write code with it) and how difficult is to learn kotlin if you are a java (it's my case)
 
 
 
@@ -13,7 +12,7 @@ give my own opinion about this new language (for me is new because I am just rea
 
 . Use Spring data jpa H2 in memory Database
 . Creating DTOs (POJOs/POCOs) is very easy (no library is needed as in Java).
-  Properties in Kotlin classes can be declared either as *mutable using the var* keyword, or as *read-only using the val keyword*.
+Properties in Kotlin classes can be declared either as *mutable using the var* keyword, or as *read-only using the val keyword*.
 +
 [source,kotlin]
 ----
@@ -24,7 +23,8 @@ data class UserEntity (@Id @GeneratedValue val id: Long? = null, val name:String
 data class PetEntity (@Id @GeneratedValue val id: Long? = null, val name:String, val age:Int)
 ----
 
-. Inheritance: All classes in Kotlin have a common superclass Any, that is the default superclass for a class with no supertypes. To declare an explicit supertype, place the type after a colon in the class header:
+. Inheritance: All classes in Kotlin have a common superclass Any, that is the default superclass for a class with no supertypes.
+To declare an explicit supertype, place the type after a colon in the class header:
 
 +
 [source,kotlin]
@@ -33,9 +33,8 @@ data class PetEntity (@Id @GeneratedValue val id: Long? = null, val name:String,
 class UserServiceImpl (val userRepository: UserRepository) :UserService
 ----
 
-. Use mapping between layers using (https://stackoverflow.com/questions/39199426/better-way-to-map-kotlin-data-objects-to-data-objects)
- If you need to write a function that can be called without having a class instance but needs access to the internals of a class (for example, a factory method), you can write it as a member of an object declaration inside that class.
- Even more specifically, if you declare a companion object inside your class, you can access its members using only the class name as a qualifier.
+. Use mapping between layers using (https://stackoverflow.com/questions/39199426/better-way-to-map-kotlin-data-objects-to-data-objects) If you need to write a function that can be called without having a class instance but needs access to the internals of a class (for example, a factory method), you can write it as a member of an object declaration inside that class.
+Even more specifically, if you declare a companion object inside your class, you can access its members using only the class name as a qualifier.
 +
 [source,kotlin]
 ----
@@ -49,6 +48,7 @@ class UserServiceImpl (val userRepository: UserRepository) :UserService
         )
     }
 ----
+
 . Create integration test layer using mockmvc and rest template
 
 
@@ -111,6 +111,7 @@ class UserServiceImpl (val userRepository: UserRepository) :UserService
                 Color.BLUE -> "Your blue color description is ${color.description}"
             }
 ----
+
 . Test kotlin amazing null properties: using Safe Calls operator (?.) and the Elvis Operator (?:)
 +
 [source,kotlin]
@@ -118,6 +119,7 @@ class UserServiceImpl (val userRepository: UserRepository) :UserService
 userService.findByName(name)?.let { User.createFromUserModel(it) }?:
                             throw UserNotFoundException("user not found")
 ----
+
 . Added A convenient and performant logging library wrapping slf4j with Kotlin extensions. https://github.com/MicroUtils/kotlin-logging
 +
 [source,kotlin]
@@ -128,9 +130,7 @@ private val LOGGER = KotlinLogging.logger {}
 LOGGER.info("User $savedEntity  was successfully created")
 ----
 
-. Testing Kotlin Collections filters and orders methods: Java .stream is not needed
-and it is not a must to make splicit call to  .collect(Collectors.toList()); (collections are
-stronger comparing to Java)
+. Testing Kotlin Collections filters and orders methods: Java .stream is not needed and it is not a must to make splicit call to .collect(Collectors.toList()); (collections are stronger comparing to Java)
 +
 [source,kotlin]
 ----
@@ -143,7 +143,6 @@ stronger comparing to Java)
             letters?.let { cad: String -> user.name.toUpperCase().contains(cad.toUpperCase()) } ?: true
         }.sortedBy { it.name }
 ----
-
 
 . Ranges can be used in many cases: for, if, case etc...
 
@@ -166,7 +165,6 @@ stronger comparing to Java)
     for (x in 10 downTo 1) { ... }
     if (x in 1..10) { ... }
 ----
-
 
 Spring loves Kotlin :) using several features making easier our code:
 

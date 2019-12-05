@@ -7,15 +7,18 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class UserServiceImpl (val userRepository: UserRepository,val customProperties: CustomProperties) :UserService  {
+class UserServiceImpl(val userRepository: UserRepository, val customProperties: CustomProperties) :
+    UserService {
 
     private val LOGGER = KotlinLogging.logger {}
 
     @Transactional(readOnly = true)
-    override fun findAll(): List<User> =userRepository.findAll().map { User.createFromUserEntity(it) }
+    override fun findAll(): List<User> =
+        userRepository.findAll().map { User.createFromUserEntity(it) }
 
     @Transactional(readOnly = true)
-    override fun findByName(name: String): User? = userRepository.findByName(name)?.let { User.createFromUserEntity(it) }
+    override fun findByName(name: String): User? =
+        userRepository.findByName(name)?.let { User.createFromUserEntity(it) }
 
     @Transactional
     override fun addUser(user: User): User {

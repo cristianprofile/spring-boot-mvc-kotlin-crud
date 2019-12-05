@@ -12,18 +12,21 @@ import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 
 @ControllerAdvice
-class RestResponseEntityExceptionHandler(private val messageSource: MessageSource) : ResponseEntityExceptionHandler() {
+class RestResponseEntityExceptionHandler(private val messageSource: MessageSource) :
+    ResponseEntityExceptionHandler() {
 
     private val LOGGER = KotlinLogging.logger {}
 
-
     @ExceptionHandler(UserNotFoundException::class)
-    fun handleControllerException(ex: UserNotFoundException, request: WebRequest): ResponseEntity<Any> {
-        LOGGER.error("$ex.message" )
-        val responseDTO = ResponseDTO(status = HttpStatus.NOT_FOUND.value(), data = "User not found")
+    fun handleControllerException(
+        ex: UserNotFoundException,
+        request: WebRequest
+    ): ResponseEntity<Any> {
+        LOGGER.error("$ex.message")
+        val responseDTO =
+            ResponseDTO(status = HttpStatus.NOT_FOUND.value(), data = "User not found")
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDTO)
     }
-
 
     /**
      * Handle default runtime exceptions
@@ -38,5 +41,4 @@ class RestResponseEntityExceptionHandler(private val messageSource: MessageSourc
         val responseDTO = ResponseDTO(status = 500, data = "Server Error")
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseDTO)
     }
-
 }
