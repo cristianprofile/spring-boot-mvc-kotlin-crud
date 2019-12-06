@@ -36,5 +36,3 @@ class ResponseErrorDTO(
 )
 
 data class Error(val errorCode: String, val errorDescription: String)
-
-

@@ -76,7 +76,9 @@ internal class UserControllerMvcMokkTest(@Autowired val mockMvc: MockMvc) {
         "3,juan,45,27"
     )
     fun `find one users returns user detail information`(
-        idExpected: Long, nameExpected: String, ageExpected: Int,
+        idExpected: Long,
+        nameExpected: String,
+        ageExpected: Int,
         favoriteNumberExpected: String
     ) {
 

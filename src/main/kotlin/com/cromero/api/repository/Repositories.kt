@@ -10,4 +10,3 @@ interface UserRepository : CrudRepository<UserEntity, Long> {
 interface PetRepository : CrudRepository<PetEntity, Long> {
     fun findByName(name: String): PetEntity?
 }
-

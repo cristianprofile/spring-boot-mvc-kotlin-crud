@@ -16,9 +16,7 @@ data class CustomProperties(
 ) {
     data class Database(
         val host: InetAddress? = InetAddress.getByName("127.0.0.1"),
-        val port: Integer,
+        val port: Int,
         val connectTimeout: Duration = Duration.ofMillis(1000)
     )
 }
-
-

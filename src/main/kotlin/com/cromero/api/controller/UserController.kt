@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
-//TODO Use try monad of Arrow https://arrow-kt.io/docs/arrow/core/try/
+// TODO Use try monad of Arrow https://arrow-kt.io/docs/arrow/core/try/
 
 @RestController
 @RequestMapping("/user")
@@ -26,13 +26,13 @@ class UserController(val userService: UserService) {
     fun addUser(@RequestBody user: User) =
         User.createFromUserModel(userService.addUser(user.toUserModel()))
 
-    //TODO rewrite using exceptions of arrow's  or Result.
+    // TODO rewrite using exceptions of arrow's  or Result.
     @GetMapping(value = ["/{name}"])
     fun getUser(@PathVariable("name") name: String) =
         userService.findByName(name)?.let { User.createFromUserModel(it) }
             ?: throw UserNotFoundException("user not found")
 
-    //TODO rewrite using exceptions of arrow's  or Result.
+    // TODO rewrite using exceptions of arrow's  or Result.
     @GetMapping(value = ["/color/{name}"])
     fun getColorTextByName(@PathVariable("name") name: String) =
         userService.findByName(name)?.let {
@@ -45,7 +45,7 @@ class UserController(val userService: UserService) {
             }
         } ?: throw UserNotFoundException("user not found")
 
-    //TODO rewrite using exceptions of arrow's  or Result.
+    // TODO rewrite using exceptions of arrow's  or Result.
     @GetMapping(value = ["/legalAge/{name}"])
     fun isLegalAge(@PathVariable("name") name: String) =
         userService.findByName(name)?.let {
@@ -57,7 +57,7 @@ class UserController(val userService: UserService) {
             }
         } ?: throw UserNotFoundException("name not found")
 
-    //TODO rewrite using exceptions of arrow's  or Result.
+    // TODO rewrite using exceptions of arrow's  or Result.
     /**
      * Find all users containing {letters} in its name. It returns all users if letters is null
      */
@@ -68,4 +68,3 @@ class UserController(val userService: UserService) {
                 ?: true
         }.sortedBy { it.name }
 }
-

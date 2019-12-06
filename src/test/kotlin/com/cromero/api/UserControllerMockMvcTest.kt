@@ -27,7 +27,7 @@ class UserControllerMockMvcTest(
 
     @Test
     fun `controller Must return User`() {
-        //save an user
+        // save an user
         val user = UserEntity(name = "pepe", age = 33, favoriteNumber = "25")
         userRepository.save(user)
 
@@ -39,14 +39,14 @@ class UserControllerMockMvcTest(
 
     @Test
     fun `controller Must return User using rest template`() {
-        //save an user
+        // save an user
         val user = UserEntity(name = "manolo", age = 33, favoriteNumber = "54")
         userRepository.save(user)
 
-        //get the user by id
+        // get the user by id
         val result = restTemplate.getForEntity<User>("/user/${user.name}")
 
-        //user asserts from database
+        // user asserts from database
         assertEquals(result.statusCode, HttpStatus.OK)
         assertTrue(result.body?.name == user.name)
         assertTrue(result.body?.age == user.age)
